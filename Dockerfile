@@ -23,7 +23,8 @@ WORKDIR /var/www/html
 RUN apt-get update 
 RUN service apache2 start
 
-
+# Restart Apache
+RUN docker exec $(docker ps) service apache2 restart
 
 
 
