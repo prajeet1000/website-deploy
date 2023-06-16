@@ -23,8 +23,11 @@ WORKDIR /var/www/html
 RUN apt-get update 
 
 
-# Restart Apache
-RUN docker exec $(docker ps) service apache2 restart
+# Expose port 80 for Apache
+EXPOSE 80
+
+# Start Apache when the container starts
+CMD ["apachectl", "-D", "FOREGROUND"]
 
 
 
