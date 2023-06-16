@@ -22,10 +22,12 @@ RUN mv website-deploy/* /var/www/html/
 # Set the working directory to the deployment location
 WORKDIR /var/www/html
 
+# Install any dependencies required by your code
+RUN service apache2 start
+
 # Expose any required ports
 EXPOSE 8000
 
-# Install any dependencies required by your code
-RUN service apache2 start
+
 
 
