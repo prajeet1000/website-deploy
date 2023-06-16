@@ -22,8 +22,7 @@ WORKDIR /var/www/html
 # Install any dependencies required by your code
 RUN apt-get update && service apache2 start
 
-# Expose any required ports
-EXPOSE 8000
+
 
 
 
