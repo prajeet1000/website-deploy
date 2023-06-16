@@ -1,9 +1,6 @@
 # Base image
 FROM ubuntu
 
-# Set the working directory inside the container
-WORKDIR /code-deploy
-
 # Install Git
 RUN apt-get update && apt-get install -y git
 
