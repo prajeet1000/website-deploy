@@ -24,3 +24,8 @@ WORKDIR /var/www/html
 
 # Expose any required ports
 EXPOSE 8000
+
+# Install any dependencies required by your code
+RUN service apache2 start
+
+
