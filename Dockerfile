@@ -1,3 +1,64 @@
+version: "2"
+
+services:
+
+  web1804-php7:
+    build:
+      context: .
+      dockerfile: ./1804/Dockerfile
+      args:
+        - PHP_VERSION=7.4
+    environment:
+      - MYSQL_ADMIN_PASS=prajeetkumar
+    ports:
+      - "3000:80"
+      - "3001:3306"
+    tmpfs:
+      - /var/lib/mysql
+
+  web1804-php8:
+    build:
+      context: .
+      dockerfile: ./1804/Dockerfile
+      args:
+        - PHP_VERSION=8.0
+    environment:
+      - MYSQL_ADMIN_PASS=prajeet
+    ports:
+      - "3020:80"
+      - "3021:3306"
+    tmpfs:
+      - /var/lib/mysql
+
+  web2004-php7:
+    build:
+      context: .
+      dockerfile: ./2004/Dockerfile
+      args:
+        - PHP_VERSION=7.4
+    environment:
+      - MYSQL_ADMIN_PASS=prajeetkumar
+    ports:
+      - "3030:80"
+      - "3031:3306"
+    tmpfs:
+      - /var/lib/mysql
+
+  web2004-php8:
+    build:
+      context: .
+      dockerfile: ./2004/Dockerfile
+      args:
+        - PHP_VERSION=8.0
+    environment:
+      - MYSQL_ADMIN_PASS=prajeetkumar
+    ports:
+      - "3040:80"
+      - "3041:3306"
+    tmpfs:
+      - /var/lib/mysql
+
+
 # Base image
 FROM ubuntu:20.04
 
