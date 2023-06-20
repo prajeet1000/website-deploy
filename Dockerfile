@@ -1,6 +1,10 @@
 # Base image
 FROM ubuntu
 
+# Set the geographic area and time zone
+RUN ln -fs /usr/share/zoneinfo/$(tzselect) /etc/localtime && dpkg-reconfigure -f noninteractive tzdata
+
+
 # Install necessary packages
 RUN apt-get update && apt-get install -y apache2 php libapache2-mod-php php-mysql
 
