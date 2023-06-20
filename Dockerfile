@@ -1,13 +1,11 @@
 # Base image
 FROM php:7.4-cli
-RUN docker-php-source extract \
-	# do important things \
-	&& docker-php-source delete
+
+# Install Git
+RUN apt-get update && apt-get install -y git
 
 # Clone the code from GitHub repository
-RUN apt install -y git
-RUN git clone https://github.com/prajeet1000/website-deploy.git
+RUN git clone https://github.com/prajeet1000/website-deploy.git /usr/src/myapp
 
-
-COPY website-deploy/* /usr/src/myapp
+# Continue with your remaining instructions, if any
 
