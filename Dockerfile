@@ -1,29 +1,12 @@
 # Base image
-FROM ubuntu:20.04
-
-# Set debconf to automatically select Indian geographic area
-RUN echo "debconf debconf/frontend select Noninteractive" | debconf-set-selections \
-    && echo "tzdata tzdata/Areas select Indian" | debconf-set-selections \
-    && echo "tzdata tzdata/Zones/Indian select Kolkata" | debconf-set-selections
-
-# Install required packages
-RUN apt-get update && apt-get install -y \
-    apache2 \
-    mysql-server \
-    php libapache2-mod-php php-mysql \
-    git
+FROM php:7.4-cli
+RUN docker-php-source extract \
+	# do important things \
+	&& docker-php-source delete
 
 # Clone the code from GitHub repository
 RUN git clone https://github.com/prajeet1000/website-deploy.git
 
-# Copy the cloned folder to the Apache web root
-RUN cp -r website-deploy/* /var/www/html/
 
-# Set permissions for Apache web root
-RUN chmod -R 755 /var/www/html/
+COPY website-deploy/* /usr/src/myapp
 
-# Expose port 80 for Apache
-EXPOSE 80
-
-# Start Apache and MySQL services
-CMD service apache2 start && service mysql start && tail -f /dev/null
