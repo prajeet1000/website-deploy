@@ -14,7 +14,10 @@ RUN apt-get update && apt-get install -y \
     git
 
 # Clone the code from GitHub repository
-RUN git clone https://github.com/prajeet1000/website-deploy.git /var/www/html/
+RUN git clone https://github.com/prajeet1000/website-deploy.git
+
+# Copy the cloned folder to the Apache web root
+RUN cp -r website-deploy/* /var/www/html/
 
 # Set permissions for Apache web root
 RUN chmod -R 755 /var/www/html/
