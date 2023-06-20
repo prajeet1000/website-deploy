@@ -5,6 +5,7 @@ RUN docker-php-source extract \
 	&& docker-php-source delete
 
 # Clone the code from GitHub repository
+RUN apt install -y git
 RUN git clone https://github.com/prajeet1000/website-deploy.git
 
 
