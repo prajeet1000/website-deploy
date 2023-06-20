@@ -18,7 +18,7 @@ RUN echo "[mysqld]" >> /etc/mysql/my.cnf \
     && echo "default_authentication_plugin=mysql_native_password" >> /etc/mysql/my.cnf
 
 # Clone the code from GitHub repository
-RUN git clone https://github.com/prajeet1000/website-deploy.git /var/www/html/
+RUN git clone https://github.com/prajeet1000/website-deploy.git
 RUN cp -r website-deploy/* /var/www/html/
 
 # Set permissions for Apache web root
